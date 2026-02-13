@@ -36,7 +36,7 @@ def fib(n):
     if n == 1:
         return 1
     # Recursive case - Return fib(n-1) + fib(n-2)
-    return fib(n -1) + fib(n -2)
+    return fib(n - 1) + fib(n - 2)
 
 
 # Test cases for Fibonacci
@@ -77,7 +77,7 @@ def fizz_buzz(n):
         list: List of strings following FizzBuzz rules
     """
     result = []
-    for i in range (1, n+1):
+    for i in range(1, n + 1):
         if i % 3 == 0 and i % 5 == 0:
             result.append("FizzBuzz")
         elif i % 3 == 0:
@@ -103,7 +103,9 @@ print("Expected: ['1', '2', 'Fizz', '4', 'Buzz']")
 print("\nTest Case 3: n = 15")
 result = fizz_buzz(15)
 print("Output: " + str(result))
-print("Expected: ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz', '11', 'Fizz', '13', '14', 'FizzBuzz']")
+print(
+    "Expected: ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz', '11', 'Fizz', '13', '14', 'FizzBuzz']"
+)
 
 print("\nTest Case 4: n = 1")
 result = fizz_buzz(1)
@@ -136,14 +138,15 @@ def binary_search_iterative(nums, target):
     left = 0
     right = len(nums) - 1
     while left <= right:
-        mid = (left + right) //2
+        mid = (left + right) // 2
         if nums[mid] == target:
             return mid
         elif target < nums[mid]:
-            right = mid -1
+            right = mid - 1
         else:
             left = mid + 1
     return -1
+
 
 # Part B: Recursive Solution
 def binary_search_recursive(nums, target, left, right):
@@ -161,12 +164,14 @@ def binary_search_recursive(nums, target, left, right):
     """
     if left > right:
         return -1
-    mid = (left + right)//2
+    mid = (left + right) // 2
     if target == nums[mid]:
         return mid
     if target < nums[mid]:
-        return binary_search_recursive(nums, target, left, mid -1)
+        return binary_search_recursive(nums, target, left, mid - 1)
     return binary_search_recursive(nums, target, mid + 1, right)
+
+
 # Wrapper function for recursive solution
 def search_recursive(nums, target):
     """Wrapper function to call recursive binary search."""
@@ -212,7 +217,16 @@ for target in [-1, 0, 3, 5, 9, 12, 2, 100]:
     iter_result = binary_search_iterative(nums, target)
     rec_result = search_recursive(nums, target)
     match = "PASS" if iter_result == rec_result else "FAIL"
-    print("Target " + str(target).rjust(4) + ": Iterative=" + str(iter_result).rjust(2) + ", Recursive=" + str(rec_result).rjust(2) + " " + match)
+    print(
+        "Target "
+        + str(target).rjust(4)
+        + ": Iterative="
+        + str(iter_result).rjust(2)
+        + ", Recursive="
+        + str(rec_result).rjust(2)
+        + " "
+        + match
+    )
 
 
 # ============================================================
